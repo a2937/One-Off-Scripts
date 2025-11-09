@@ -5,7 +5,6 @@
 // @description  Translates WingDings to English
 // @author       a2937
 // @match        https://**.tumblr.com/**
-// @match        https://discord.com/app/**
 // @match        https://**.archiveofourown.org/**
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=tampermonkey.net
 // @grant        none
@@ -46,13 +45,17 @@
 
 
          // Symbol only because for some reason they're not always matching
+         '👌︎': 'B',
          '👍︎': 'C',
+         '👎︎': 'D',
          '😐︎': 'K',
+         '💣︎': 'M',
+         '🏱︎': 'P',
          '🕆︎': 'U',
          '💧︎': 'S',
          '🕈︎': 'W',
          '📬︎': ".",
-         '📪︎': ','
+         '📪︎': ',',
      }
 
 
