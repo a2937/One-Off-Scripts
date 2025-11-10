@@ -10,7 +10,10 @@
 // @grant        none
 // @sandbox      DOM
 // ==/UserScript==
-(function() {
+
+addEventListener("load", setTimeout(main, 2000))
+
+function main() {
     'use strict';
      const wingDingAlphabet = {
         '\u270C': 'A',
@@ -67,4 +70,4 @@
     })
   });
     // Your code here...
-})();
+}
