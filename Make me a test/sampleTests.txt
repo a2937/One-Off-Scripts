@@ -1,0 +1,2 @@
+longestWord("Hello coding challenge.")->"challenge"
+longestWord("The quick red fox")->"quick"

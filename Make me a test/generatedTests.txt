@@ -1,0 +1,10 @@
+describe("Generated Tests", () => {
+	it(`longestWord("Hello coding challenge.") should return "challenge"`, () =>
+	{
+		assert.strictEqual(longestWord("Hello coding challenge."),"challenge");
+	})
+	it(`longestWord("The quick red fox") should return "quick"`, () =>
+	{
+		assert.strictEqual(longestWord("The quick red fox"),"quick");
+	})
+})
