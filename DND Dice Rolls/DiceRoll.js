@@ -38,7 +38,7 @@ else
 {
   for(let diceRoll = 0 ; diceRoll < myArgs.length ; diceRoll++)
   {
-    const diceRollFormat = /(\d+)d(\d+)/; 
+    const diceRollFormat = /(\d+)d(\d+)/g; 
     const matches = [...myArgs[diceRoll].matchAll(diceRollFormat)];
     const diceCount = matches[0][1]; 
     const sides = matches[0][2];
