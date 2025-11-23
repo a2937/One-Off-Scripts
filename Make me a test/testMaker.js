@@ -1,6 +1,34 @@
 import { promises as fs } from "fs";
+import * as readline from "readline";
 
-const target = "sampleTests.txt";
+const myArgs = process.argv.slice(2); 
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+});
+  
+
+console.log("Simple automated test creator\n");
+console.log("All generated tests will be written to generatedTests.txt when this app is finished"); 
+
+
+let target = "sampleTests.txt";
+
+
+if(myArgs.length === 0)
+{
+    rl.question('What is the name of the file with the tests : ', (fileName) => {
+       target = fileName; 
+       rl.close();
+    });
+}
+else 
+{
+    target = myArgs[0].trim(); 
+}
+
+
 
 const targetFramework = "mocha"; 
 
@@ -41,7 +69,4 @@ async function generateTestContents()
 const fullOutput = await generateTestContents(); 
 
 
-fs.writeFile("generatedTests.txt",fullOutput); 
-
-
-
+await fs.writeFile("generatedTests.txt",fullOutput); 
