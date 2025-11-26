@@ -1,0 +1,14 @@
+{
+  "name": "Chai Remix",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js", 
+    "test": "node --test"
+  },
+  "keywords": [],
+  "author": "= <=>",
+  "license": "ISC",
+  "packageManager": "pnpm@10.12.4"
+}
