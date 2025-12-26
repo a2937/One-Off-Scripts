@@ -79,16 +79,45 @@ background_install_packages(REQUIRED_PACKAGES, modules_path)
 def strVector3( v3 ):
     return str(v3.x) + "," + str(v3.y) + "," + str(v3.z)
 
-# create a new cube
-bpy.ops.mesh.primitive_cube_add()
+## TODO: make a panel with the property; filePath and depth (or make a depth map or something)
 
-# newly created cube will be automatically selected
-cube = bpy.context.selected_objects[0]
-# change name
-cube.name = "MyLittleCube"
 
-# change its location
-cube.location = (0.0, 5.0, 0.0)
 
-# done
-print("Done creating MyCube at position " + strVector3(cube.location) + " with name " + cube.name)
+
+filePath = r"F:\One off Scripts\One-Off-Scripts\3D Pixel Art from Image\smbvarious.png" # Remove hard-coding later
+maxDepth =1
+
+# NOTE: Transparent color is presumed to be normal transparent 
+transparent_red = 0 
+transparent_green = 0 
+transparent_blue = 0
+transparent_alpha = 0
+
+# Open up image
+import PIL
+from PIL import Image
+input_image = Image.open(filePath)
+pixel_map = input_image.convert("RGBA").load()
+width, height = input_image.size
+
+
+for depth in range(maxDepth):
+    print(depth)
+    for i in range(width):
+        print(i)
+        for j in range(height):
+            print(j)
+            pixel = pixel_map[i, j]
+            if pixel[0] == transparent_red and pixel[1] == transparent_green and pixel[2] == transparent_blue and pixel[3] == transparent_alpha:
+                print("Skipping") # Do nothing as there is no pixel  
+            else: 
+                # Assume 3D center is 0, 0 , 0
+                # create a new cube
+                bpy.ops.mesh.primitive_cube_add()
+                cube = bpy.context.selected_objects[0]
+                cube.name = str(i) + "," + str(j) + " at " + str(depth) + " depth"
+                cube.location = (i, depth, j)
+
+
+
+
