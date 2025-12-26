@@ -84,8 +84,9 @@ def strVector3( v3 ):
 
 
 
-filePath = r"F:\One off Scripts\One-Off-Scripts\3D Pixel Art from Image\smbvarious.png" # Remove hard-coding later
+filePath = r"F:\One off Scripts\One-Off-Scripts\3D Pixel Art from Image\smbvarious.png" # TODO Remove hard-coding later
 maxDepth =1
+
 
 # NOTE: Transparent color is presumed to be normal transparent 
 transparent_red = 0 
@@ -99,7 +100,12 @@ from PIL import Image
 input_image = Image.open(filePath)
 pixel_map = input_image.convert("RGBA").load()
 width, height = input_image.size
+materials = {}
+materialCreatedCount = 0
 
+offsetZ = height 
+offsetY = 0
+offsetX = 0 
 
 for depth in range(maxDepth):
     print(depth)
@@ -116,7 +122,21 @@ for depth in range(maxDepth):
                 bpy.ops.mesh.primitive_cube_add()
                 cube = bpy.context.selected_objects[0]
                 cube.name = str(i) + "," + str(j) + " at " + str(depth) + " depth"
-                cube.location = (i, depth, j)
+                cube.location = (i + offsetX, depth + offsetY, -j + offsetZ)
+                matKey = str(pixel[0]) + str(pixel[1]) + str(pixel[2]) 
+                if matKey in materials:
+                    cube.data.materials.append(materials[matKey])
+                    bpy.ops.object.shade_smooth()
+                else:
+                    materialCreatedCount = materialCreatedCount + 1 
+                    materials[matKey] = bpy.data.materials.new(name='Material' + str(materialCreatedCount))
+                    materials[matKey].use_nodes = True
+                    principled_bsdf_node = materials[matKey].node_tree.nodes["Principled BSDF"]
+                    principled_bsdf_node.inputs["Base Color"].default_value = (pixel[0] / 255, pixel[1] / 255,pixel[2] / 255, 1)
+                    principled_bsdf_node.inputs["Metallic"].default_value = 1.0
+                    cube.data.materials.append(materials[matKey])
+                    bpy.ops.object.shade_smooth()
+                    
 
 
 
