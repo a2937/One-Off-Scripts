@@ -85,7 +85,7 @@ def strVector3( v3 ):
 
 
 filePath = r"F:\One off Scripts\One-Off-Scripts\3D Pixel Art from Image\smbvarious.png" # TODO Remove hard-coding later
-maxDepth =1
+maxDepth = 5
 
 
 # NOTE: Transparent color is presumed to be normal transparent 
@@ -123,6 +123,9 @@ for depth in range(maxDepth):
                 cube = bpy.context.selected_objects[0]
                 cube.name = str(i) + "," + str(j) + " at " + str(depth) + " depth"
                 cube.location = (i + offsetX, depth + offsetY, -j + offsetZ)
+                cube.dimensions[0] = 1
+                cube.dimensions[1] = 1
+                cube.dimensions[2] = 1
                 matKey = str(pixel[0]) + str(pixel[1]) + str(pixel[2]) 
                 if matKey in materials:
                     cube.data.materials.append(materials[matKey])
