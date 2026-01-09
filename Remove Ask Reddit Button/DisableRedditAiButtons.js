@@ -13,7 +13,7 @@ addEventListener("load", setTimeout(main, 2000))
 
 function main() {
     'use strict';
-    const buttons = document.querySelectorAll(`a[href$="/answers"]`,`a[href$="/answers/"]`);
+    const buttons = document.querySelectorAll(`a[href^="/answers"]`);
     
     for(let i = 0 ;i < buttons.length;i++)
     {
