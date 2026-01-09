@@ -9,7 +9,9 @@
 // @grant        none
 // ==/UserScript==
 
-(function() {
+addEventListener("load", setTimeout(main, 2000))
+
+function main() {
     'use strict';
     const buttons = document.querySelectorAll(`a[href$="/answers"]`,`a[href$="/answers/"]`);
     
@@ -17,4 +19,4 @@
     {
         buttons[i].remove();
     }
-})();
+};

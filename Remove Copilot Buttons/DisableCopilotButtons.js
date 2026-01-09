@@ -9,7 +9,10 @@
 // @grant        none
 // ==/UserScript==
 
-(function() {
+
+addEventListener("load", setTimeout(main, 2000))
+
+function main() {
     'use strict';
     const buttons = document.querySelectorAll(`a[href$="/copilot"]`);
     for(let i = 0 ;i < buttons.length;i++)
@@ -17,4 +20,4 @@
         buttons[i].remove();
     }
     // Your code here...
-})();
+};
