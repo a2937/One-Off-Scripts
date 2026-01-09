@@ -11,7 +11,7 @@
 
 (function() {
     'use strict';
-    const buttons = document.querySelectorAll(`a[href^="https://github.com/copilot"]`);
+    const buttons = document.querySelectorAll(`a[href$="/copilot"]`);
     for(let i = 0 ;i < buttons.length;i++)
     {
         buttons[i].remove();

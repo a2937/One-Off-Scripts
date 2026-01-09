@@ -11,7 +11,8 @@
 
 (function() {
     'use strict';
-    const buttons = document.querySelectorAll(`a[href^="/answers"]`);
+    const buttons = document.querySelectorAll(`a[href$="/answers"]`,`a[href$="/answers/"]`);
+    
     for(let i = 0 ;i < buttons.length;i++)
     {
         buttons[i].remove();
