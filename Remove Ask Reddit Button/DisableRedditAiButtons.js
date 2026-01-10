@@ -9,7 +9,15 @@
 // @grant        none
 // ==/UserScript==
 
-addEventListener("load", setTimeout(main, 2000))
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", main);
+}
+else 
+{
+    main(); 
+}
+
+
 
 function main() {
     'use strict';
